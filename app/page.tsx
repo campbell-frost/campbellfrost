@@ -7,7 +7,7 @@ export default function Home() {
     <main className="w-full min-h-screen bg-background">
       <Navbar />
       <HeroHighlight>
-        <div className="max-w-4xl mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto px-4 py-10">
           <Hero />
         </div>
       </HeroHighlight>
