@@ -9,17 +9,18 @@ const Hero = () => {
           <div className="w-full md:w-1/2 mb-10 md:mb-0 mr-22">
             <p className="text-xl font-bold">Hi, I&apos;m Campbell</p>
             <p className="text-6xl mt-6 font-bold mb-10 leading-tight">
-              I am a full stack <Highlight>software engineer</Highlight> with a
-              passion for crafting digital solutions
+              I am a full stack <Highlight>software engineer</Highlight>{" "}
+              passionate about web development
             </p>
-            <h5 className="text-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300">
+
+            <h5 className="inline">
               Contact me -{" "}
-              <a href="mailto:campbellsfrost@gmail.com" className="email-link">
+              <a href="mailto:campbellsfrost@gmail.com" className="px-2 rounded-md text-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300 ">
                 campbellsfrost@gmail.com
               </a>
             </h5>
           </div>
-          <div className="w-full md:w-1/2 mt-4 ml-22">
+          <div className="w-full md:w-1/3 mt-4 ml-22">
             <Image
               src="/images/me_rock.png"
               height="1600"
