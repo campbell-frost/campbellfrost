@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar";
 import Hero from "../components/hero";
-import Technologies from "./technologies";
+import Technologies from "../components/technologies";
 
 export default function Home() {
   return (
