@@ -2,6 +2,8 @@
 import { cn } from "@/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
+import svgToDataUri from "mini-svg-data-uri";
+import { useTheme } from 'next-themes';
 
 export const HeroHighlight = ({
   children,
@@ -14,7 +16,6 @@ export const HeroHighlight = ({
 }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
-
   function handleMouseMove({
     currentTarget,
     clientX,
@@ -22,22 +23,46 @@ export const HeroHighlight = ({
   }: React.MouseEvent<HTMLDivElement>) {
     if (!currentTarget) return;
     let { left, top } = currentTarget.getBoundingClientRect();
-
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+  const { resolvedTheme } = useTheme();
+
+  const dark = resolvedTheme === 'dark';
+
+  const color = dark ? '#a35fe8' : '#8f34eb'
+
+
   return (
     <div
       className={cn(
-        "relative h-[40rem] items-center  justify-center w-full group",
+        "relative h-[40rem] items-center justify-center w-full group",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 pointer-events-none" />
+      <div className="absolute inset-0 bg-dot-fade-blue-300 dark:bg-dot-fade-blue-900" />
       <motion.div
-        className="pointer-events-none bg-dot-thick-indigo-500 dark:bg-dot-thick-indigo-500 absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
+          backgroundImage: `url("${svgToDataUri(
+            `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs>
+                <pattern id="dotPattern" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+                  <circle cx="8" cy="8" r="2" fill="${color}" />
+                </pattern>
+                <linearGradient id="fade" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="white" stop-opacity="1" />
+                  <stop offset="100%" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <mask id="fadeMask">
+                  <rect width="100%" height="100%" fill="url(#fade)" />
+                </mask>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#dotPattern)" mask="url(#fadeMask)" />
+            </svg>`
+          )}")`,
+          backgroundSize: '100% 100%',
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
               200px circle at ${mouseX}px ${mouseY}px,
@@ -54,7 +79,6 @@ export const HeroHighlight = ({
           `,
         }}
       />
-
       <div className={cn("relative z-20", className)}>{children}</div>
     </div>
   );

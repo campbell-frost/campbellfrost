@@ -81,24 +81,38 @@ const config = {
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {
-          "bg-dot-thick": (value: any) => ({
+          "bg-dot-fade": (value: any) => ({
             backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
+              `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                <circle cx="8" cy="8" r="1.5" fill="${value}" />
+                <circle cx="8" cy="8" r="1.5" fill="${value}" />
+                <circle cx="8" cy="8" r="1.5" fill="${value}" />
+              </svg>`
             )}")`,
+            backgroundSize: '32px 32px',
+            maskImage: 'linear-gradient(to bottom, black, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
+            maskSize: '100% 100%',
+            WebkitMaskSize: '100% 100%',
           }),
         },
-        { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+        {
+          values: flattenColorPalette(theme("backgroundColor")),
+          type: "color",
+        }
       );
     },
   ],
-} satisfies Config
+} satisfies Config;
+
+
 
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
