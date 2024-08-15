@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const MovingCards = ({
@@ -11,8 +12,8 @@ export const MovingCards = ({
   className,
 }: {
   items: {
-    name: string;
-    link: string;
+    text: string;
+    image: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -24,6 +25,7 @@ export const MovingCards = ({
 
   useEffect(() => {
     addAnimation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [start, setStart] = useState(false);
@@ -73,36 +75,33 @@ export const MovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+
         )}
       >
         {items.map((item, _) => (
           <li
-            className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            }}
-            key={item.name}
+            className="lg:w-[300px] md:w-[300px]max-w-full sm:w-[200px] relative rounded-2xl border flex-shrink-0 dark:border-gray-900 px-8 py-6 bg-background"
+            key={item.text}
           >
             <div
               aria-hidden="true"
               className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
             ></div>
-            <img src={item.link} width={100} height={100}></img>
-            <div className="relative z-20 mt-6 flex flex-row items-center">
-              <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                {item.name}
-              </span>
+            <div className="flex flex-row justify-between items-center">
+              <Image src={item.image} width={55} height={50} alt={item.text} />
+              <div className="z-20 flex flex-row">
+                <h2 className="text-xl leading-[1.6] text-gray-400 font-normal">
+                  {item.text}
+                </h2>
+              </div>
             </div>
           </li>
         ))}
