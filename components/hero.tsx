@@ -15,7 +15,10 @@ const Hero = () => {
 
             <h5 className="inline">
               Contact me -{" "}
-              <a href="mailto:campbellsfrost@gmail.com" className="px-2 rounded-md text-lg font-semibold hover:bg-white hover:text-black transition-colors duration-300 ">
+              <a
+                href="mailto:campbellsfrost@gmail.com"
+                className="px-2 rounded-md text-lg font-semibold hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white transition-colors duration-300 "
+              >
                 campbellsfrost@gmail.com
               </a>
             </h5>
