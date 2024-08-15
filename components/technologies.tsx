@@ -12,8 +12,8 @@ const techList1 = [
     text: "React.js",
   },
   {
-    image: "/images/GoLogo.png",
-    text: "Go",
+    image: "/images/CSharpLogo.png",
+    text: "C#",
   },
   {
     image: "/images/VueLogo.png",
@@ -21,11 +21,11 @@ const techList1 = [
   },
   {
     image: "/images/GoLogo.png",
-    text: "Svelte",
+    text: "Go",
   },
   {
-    image: "/images/CSharpLogo.png",
-    text: "C#",
+    image: "/images/SvelteLogo.png",
+    text: "Svelte",
   },
 ];
 
@@ -61,17 +61,17 @@ const Technologies = () => {
     <div className="bg-secondary">
       <div className="max-w-7xl mx-auto py-8">
         <h1 className="font-bold px-4 text-3xl">Technologies I use</h1>
-        <div className="px-4 pt-2">
+        <div className="mx-4 mt-2">
           <MovingCards
             items={techList1}
             direction="left"
-            pauseOnHover={true}
+            pauseOnHover={false}
             speed="slow"
           />
           <MovingCards
             items={techList2}
             direction="right"
-            pauseOnHover={true}
+            pauseOnHover={false}
             speed="slow"
           />
         </div>
