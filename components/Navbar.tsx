@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ToggleTheme from "./toggle-theme";
+import ToggleTheme from "./ToggleTheme";
 
 const Navbar = () => {
   return (
