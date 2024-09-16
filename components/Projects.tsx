@@ -37,10 +37,13 @@ const Project = ({ project }: ProjectProps) => {
           {project.description}
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex-wrap">
         {project.technologies.map((i) => (
-          <div key={i.imageUrl}>
-            <Image src={i.imageUrl} alt={i.alt} width={40} height={40} />
+          <div className="pr-3 pb-3" key={i.imageUrl}>
+            <div className="flex border rounded-lg items-center">
+              <Image className="m-3" src={i.imageUrl} alt={i.alt} width={40} height={40} />
+              <p className="mx-auto block mr-4">{i.alt}</p>
+            </div>
           </div>
         ))}
       </CardFooter>
@@ -77,11 +80,11 @@ const ProjectList = [
     company: "Florence Darlingon Technical College",
     imageUrl: "/images/projectImages/SignMeIn.png",
     description:
-      "A full stack web app made during my Capstone designed for the Florence Darlington Technical College to aid tutors in the Math Hub sign students in more efficiently, and to give managers the ability to generate reports, view graphs, and edit employee and account info.  The project was developed using Blazor on .NET 8, Azure SQL, VS-Code, and GitHub in an Agile / Scrum environment.",
+      "A full stack web app made during my Capstone designed for the Florence Darlington Technical College to aid tutors in the Math Hub sign students in more efficiently, and to give managers the ability to generate reports, view graphs, and edit employee and account info. ",
     technologies: [
       {
         imageUrl: "/images/technologyImages/CSharpLogo.png",
-        alt: "/C#",
+        alt: "C#",
       },
       {
         imageUrl: "/images/technologyImages/BlazorLogo.png",
@@ -103,7 +106,7 @@ const ProjectList = [
     company: "McLeod Health",
     imageUrl: "/images/projectImages/MorgueTracker.png",
     description:
-      "A mobile friendly full stack web app intended for employees at the McLeod morgue to streamline the intake and release process for cadavers, and to ensure that the cadaver is released to the correct funeral home.  This app is still in use today by McLeod.  The app was developed during an internship using ASP.NET MVC, GitHub, and Visual Studio.",
+      "A mobile friendly full stack web app intended for employees at the McLeod morgue to streamline the intake and release process for cadavers, and to ensure that the cadaver is released to the correct funeral home.  This app is still in use today by McLeod Health.",
     technologies: [
       {
         imageUrl: "/images/technologyImages/CSharpLogo.png",
@@ -125,7 +128,7 @@ const ProjectList = [
     company: "Francis Marion University",
     imageUrl: "/images/projectImages/BossyBooks.png",
     description:
-      "A full stack web app made as my second Capstone with Next.js and Postgres hosted on Vercel that allows small businesses to manage customer and invoice information.",
+      "A full stack web app made as my second Capstone designed to help small business owners track customers and any invoices those customers have, as well as a calander to track upcoming events..  The app is complete with both Google OAuth and standard email auth.",
     technologies: [
       {
         imageUrl: "/images/technologyImages/NextJsLogo.png",
@@ -149,7 +152,7 @@ const ProjectList = [
 
 const Projects = () => {
   return (
-    <div className="relative max-w-7xl mx-auto px-4 py-10">
+    <div className="relative max-w-7xl mx-auto py-10">
       <div className="flex flex-wrap items-center justify-between">
         <h1 className="text-3xl pb-10">Projects I&apos;ve built </h1>
         <Carousel
