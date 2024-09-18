@@ -4,7 +4,7 @@ import { HeroHighlight, Highlight } from "./ui/hero-background";
 const Hero = () => {
   return (
     <HeroHighlight>
-      <div className="relative max-w-7xl mx-auto px-4 py-10">
+      <div className="relative max-w-7xl mx-auto px-6 py-10">
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full md:w-1/2 mb-10 md:mb-0 mr-22">
             <p className="text-xl font-bold">Hi, I&apos;m Campbell</p>

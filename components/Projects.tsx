@@ -20,7 +20,7 @@ type ProjectProps = {
 
 const Project = ({ project }: ProjectProps) => {
   return (
-    <Card className="">
+    <Card>
       <CardHeader>{project.name}
         <CardDescription>
           {project.company
@@ -152,7 +152,7 @@ const ProjectList = [
 
 const Projects = () => {
   return (
-    <div className="relative max-w-7xl mx-auto py-10 px-4">
+    <div className="relative max-w-7xl mx-auto py-10 px-6">
       <div className="flex flex-wrap items-center justify-between">
         <h1 className="text-3xl pb-10">Projects I&apos;ve built </h1>
         <Carousel
