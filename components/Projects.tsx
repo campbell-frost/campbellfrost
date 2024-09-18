@@ -96,7 +96,7 @@ const ProjectList = [
       },
       {
         imageUrl: "/images/technologyImages/EntityFrameworkLogo.png",
-        alt: "Entity Framework",
+        alt: "EF Core",
       }
     ],
   },
@@ -113,13 +113,13 @@ const ProjectList = [
         alt: "C#"
       },
       {
+        imageUrl: "/images/technologyImages/PostgresLogo.png",
+        alt: "Postgres"
+      },
+      {
         imageUrl: "/images/technologyImages/MVCLogo.png",
         alt: "ASP.NET MVC",
       },
-      {
-        imageUrl: "/images/technologyImages/PostgresLogo.png",
-        alt: "Postgres"
-      }
     ],
   },
   {
@@ -132,7 +132,7 @@ const ProjectList = [
     technologies: [
       {
         imageUrl: "/images/technologyImages/NextJsLogo.png",
-        alt: "Next Js"
+        alt: "Next"
       },
       {
         imageUrl: "/images/technologyImages/TypescriptLogo.png",
@@ -152,7 +152,7 @@ const ProjectList = [
 
 const Projects = () => {
   return (
-    <div className="relative max-w-7xl mx-auto py-10">
+    <div className="relative max-w-7xl mx-auto py-10 px-4">
       <div className="flex flex-wrap items-center justify-between">
         <h1 className="text-3xl pb-10">Projects I&apos;ve built </h1>
         <Carousel
@@ -168,7 +168,7 @@ const Projects = () => {
         >
           <CarouselContent>
             {ProjectList.map((project) => (
-              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3 sm:basis-1">
+              <CarouselItem key={project.id} className="basis-1/2 md:basis-1/2 lg:basis-1/3 sm:basis-1/2">
                 <Project project={project}></Project>
               </CarouselItem>
             ))}
