@@ -30,7 +30,13 @@ const Project = ({ project }: ProjectProps) => {
       </CardHeader>
       <CardContent>
         <div className="flex justify-center items-center">
-          <Image src={project.imageUrl} alt={project.name} width={400} height={400} />
+          <Image
+            src={project.imageUrl}
+            alt={project.name}
+            width={400}
+            height={400}
+            className="rounded-sm"
+          />
         </div>
         <div className="pt-6">
           {project.description}
@@ -197,7 +203,7 @@ const Projects = () => {
         </Carousel >
       </div>
     </div>
-  )
+  );
 }
 
 export default Projects;
