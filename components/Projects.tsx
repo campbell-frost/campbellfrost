@@ -6,16 +6,18 @@ import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 
 type ProjectProps = {
-  project: {
-    name: string,
-    company?: string,
+  project: ProjectType
+}
+
+type ProjectType = {
+  name: string,
+  company?: string,
+  imageUrl: string,
+  description: string,
+  technologies: {
     imageUrl: string,
-    description: string,
-    technologies: {
-      imageUrl: string,
-      alt: string,
-    }[],
-  }
+    alt: string,
+  }[],
 }
 
 const Project = ({ project }: ProjectProps) => {
@@ -38,11 +40,11 @@ const Project = ({ project }: ProjectProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex-wrap">
-        {project.technologies.map((i) => (
-          <div className="pr-3 pb-3" key={i.imageUrl}>
+        {project.technologies.map((tech) => (
+          <div className="pr-3 pb-3" key={tech.imageUrl}>
             <div className="flex border rounded-lg items-center">
-              <Image className="m-3" src={i.imageUrl} alt={i.alt} width={40} height={40} />
-              <p className="mx-auto block mr-4">{i.alt}</p>
+              <Image className="m-3 rounded-sm" src={tech.imageUrl} alt={tech.alt} width={40} height={40} />
+              <p className="mx-auto block mr-4">{tech.alt}</p>
             </div>
           </div>
         ))}
@@ -52,30 +54,28 @@ const Project = ({ project }: ProjectProps) => {
   )
 }
 
-const ProjectList = [
+const ProjectList: ProjectType[] = [
   {
-    id: 1,
     name: "Supacrud",
     company: "Personal Project",
-    imageUrl: "/images/projectImages/Supacrud.jpg",
-    description: "A CLI tool written in Go and TypeScript designed to generate CRUD operations for Supabase projects in TypeScript. This tool streamlines development by automating repetitive database tasks, making integration with Supabase seamless for developers. Developed using Go, TypeScript, and the Cobra library for Go CLI functionality.",
+    imageUrl: "/images/projectImages/supacrud.png",
+    description: "A CLI tool written in TypeScript with the oclif CLI library designed to generate CRUD operations for TypeScript projects using Supabase. This tool streamlines development by automating repetitive database tasks, making integration with Supabase seamless for developers.",
     technologies: [
       {
-        "imageUrl": "/images/technologyImages/GoLogo.png",
-        "alt": "Go"
-      },
-      {
         "imageUrl": "/images/technologyImages/TypescriptLogo.png",
-        "alt": "TypeScript"
+        "alt": "TypeScript",
       },
       {
         "imageUrl": "/images/technologyImages/SupabaseLogo.png",
-        "alt": "Supabase"
+        "alt": "Supabase",
+      },
+      {
+        "imageUrl": "/images/technologyImages/OclifLogo.png",
+        "alt": "oclif",
       },
     ]
   },
   {
-    id: 2,
     name: "Sign Me In",
     company: "Florence Darlingon Technical College",
     imageUrl: "/images/projectImages/SignMeIn.png",
@@ -101,12 +101,11 @@ const ProjectList = [
     ],
   },
   {
-    id: 3,
     name: "Morgue Tracker",
     company: "McLeod Health",
     imageUrl: "/images/projectImages/MorgueTracker.png",
     description:
-      "A mobile friendly full stack web app intended for employees at the McLeod morgue to streamline the intake and release process for cadavers, and to ensure that the cadaver is released to the correct funeral home.  This app is still in use today by McLeod Health.",
+      "A mobile friendly full stack web app intended for employees at the McLeod Health morgue to streamline the intake and release process for cadavers, and to ensure that the cadaver is released to the correct funeral home.  This app was written during an internship and  is still in use today by McLeod Health.",
     technologies: [
       {
         imageUrl: "/images/technologyImages/CSharpLogo.png",
@@ -123,7 +122,6 @@ const ProjectList = [
     ],
   },
   {
-    id: 4,
     name: "Bossy Books",
     company: "Francis Marion University",
     imageUrl: "/images/projectImages/BossyBooks.png",
@@ -148,7 +146,7 @@ const ProjectList = [
       },
     ],
   },
-]
+];
 
 const Projects = () => {
   return (
@@ -167,8 +165,8 @@ const Projects = () => {
           ]}
         >
           <CarouselContent>
-            {ProjectList.map((project) => (
-              <CarouselItem key={project.id} className="basis-1/2 md:basis-1/2 lg:basis-1/3 sm:basis-1/2">
+            {ProjectList.map((project, index) => (
+              <CarouselItem key={index} className="basis-1/2 md:basis-1/2 lg:basis-1/3 sm:basis-1/2">
                 <Project project={project}></Project>
               </CarouselItem>
             ))}
