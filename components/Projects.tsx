@@ -11,7 +11,7 @@ type ProjectProps = {
 
 type ProjectData = {
   name: string,
-  company?: string,
+  company: string,
   imageUrl: string,
   description: string,
   technologies: {
@@ -25,10 +25,7 @@ const Project = ({ project }: ProjectProps) => {
     <Card>
       <CardHeader>{project.name}
         <CardDescription>
-          {project.company
-            ? project.company
-            : <p>none</p>
-          }
+          {project.company}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -50,17 +47,17 @@ const Project = ({ project }: ProjectProps) => {
         ))}
       </CardFooter>
     </Card>
-
-  )
+  );
 }
 
-const techUrl = "/images/technologyImages/";
 const projectUrl = "/images/projectImages/";
+const techUrl = "/images/technologyImages/";
+
 const projects: ProjectData[] = [
   {
     name: "Supacrud",
     company: "Personal Project",
-    imageUrl: `${projectUrl}supacrud.png`,
+    imageUrl: `${projectUrl}Supacrud.png`,
     description: "A CLI tool written in TypeScript with the oclif CLI library designed to generate CRUD operations for TypeScript projects using Supabase. This tool streamlines development by automating repetitive database tasks, making integration with Supabase seamless for developers.",
     technologies: [
       {
@@ -75,6 +72,30 @@ const projects: ProjectData[] = [
         imageUrl: `${techUrl}OclifLogo.png`,
         alt: "oclif",
       },
+    ]
+  },
+  {
+    name: "Trip Tracker",
+    company: "Personal Project",
+    description: "A full-stack web application built with Next.js and TypeScript that enables users to document and manage their travel experiences. The platform features a modern, responsive interface styled with Tailwind CSS and integrates with Supabase for secure user authentication and real-time data storage.",
+    imageUrl: `${projectUrl}TripTracker.png`,
+    technologies: [
+      {
+        imageUrl: `${techUrl}NextJsLogo.png`,
+        alt: "NextJs"
+      },
+      {
+        imageUrl: `${techUrl}TypescriptLogo.png`,
+        alt: "TypeScript"
+      },
+      {
+        imageUrl: `${techUrl}SupabaseLogo.png`,
+        alt: "Supabase"
+      },
+      {
+        imageUrl: `${techUrl}TailwindLogo.png`,
+        alt: "Tailwind",
+      }
     ]
   },
   {
