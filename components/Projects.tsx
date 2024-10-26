@@ -181,7 +181,7 @@ const Projects = () => {
   return (
     <div className="relative max-w-7xl mx-auto py-10 px-6">
       <div className="flex flex-wrap items-center justify-between">
-        <h1 className="text-3xl pb-10">Projects I&apos;ve built </h1>
+        <h1 className="text-3xl mb-10 font-bold">Projects I&apos;ve built </h1>
         <Carousel
           opts={{
             align: "start",
