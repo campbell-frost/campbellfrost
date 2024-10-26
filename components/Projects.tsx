@@ -6,10 +6,10 @@ import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 
 type ProjectProps = {
-  project: ProjectType
+  project: ProjectData,
 }
 
-type ProjectType = {
+type ProjectData = {
   name: string,
   company?: string,
   imageUrl: string,
@@ -54,48 +54,50 @@ const Project = ({ project }: ProjectProps) => {
   )
 }
 
-const ProjectList: ProjectType[] = [
+const techUrl = "/images/technologyImages/";
+const projectUrl = "/images/projectImages/";
+const projects: ProjectData[] = [
   {
     name: "Supacrud",
     company: "Personal Project",
-    imageUrl: "/images/projectImages/supacrud.png",
+    imageUrl: `${projectUrl}supacrud.png`,
     description: "A CLI tool written in TypeScript with the oclif CLI library designed to generate CRUD operations for TypeScript projects using Supabase. This tool streamlines development by automating repetitive database tasks, making integration with Supabase seamless for developers.",
     technologies: [
       {
-        "imageUrl": "/images/technologyImages/TypescriptLogo.png",
-        "alt": "TypeScript",
+        imageUrl: `${techUrl}TypescriptLogo.png`,
+        alt: "TypeScript",
       },
       {
-        "imageUrl": "/images/technologyImages/SupabaseLogo.png",
-        "alt": "Supabase",
+        imageUrl: `${techUrl}SupabaseLogo.png`,
+        alt: "Supabase",
       },
       {
-        "imageUrl": "/images/technologyImages/OclifLogo.png",
-        "alt": "oclif",
+        imageUrl: `${techUrl}OclifLogo.png`,
+        alt: "oclif",
       },
     ]
   },
   {
     name: "Sign Me In",
     company: "Florence Darlingon Technical College",
-    imageUrl: "/images/projectImages/SignMeIn.png",
+    imageUrl: `${projectUrl}SignMeIn.png`,
     description:
       "A full stack web app made during my Capstone designed for the Florence Darlington Technical College to aid tutors in the Math Hub sign students in more efficiently, and to give managers the ability to generate reports, view graphs, and edit employee and account info. ",
     technologies: [
       {
-        imageUrl: "/images/technologyImages/CSharpLogo.png",
+        imageUrl: `${techUrl}CSharpLogo.png`,
         alt: "C#",
       },
       {
-        imageUrl: "/images/technologyImages/BlazorLogo.png",
+        imageUrl: `${techUrl}BlazorLogo.png`,
         alt: "Blazor",
       },
       {
-        imageUrl: "/images/technologyImages/AzureLogo.png",
+        imageUrl: `${techUrl}AzureLogo.png`,
         alt: "Azure",
       },
       {
-        imageUrl: "/images/technologyImages/EntityFrameworkLogo.png",
+        imageUrl: `${techUrl}EntityFrameworkLogo.png`,
         alt: "EF Core",
       }
     ],
@@ -103,20 +105,20 @@ const ProjectList: ProjectType[] = [
   {
     name: "Morgue Tracker",
     company: "McLeod Health",
-    imageUrl: "/images/projectImages/MorgueTracker.png",
+    imageUrl: `${projectUrl}MorgueTracker.png`,
     description:
       "A mobile friendly full stack web app intended for employees at the McLeod Health morgue to streamline the intake and release process for cadavers, and to ensure that the cadaver is released to the correct funeral home.  This app was written during an internship and  is still in use today by McLeod Health.",
     technologies: [
       {
-        imageUrl: "/images/technologyImages/CSharpLogo.png",
+        imageUrl: `${techUrl}CSharpLogo.png`,
         alt: "C#"
       },
       {
-        imageUrl: "/images/technologyImages/PostgresLogo.png",
+        imageUrl: `${techUrl}PostgresLogo.png`,
         alt: "Postgres"
       },
       {
-        imageUrl: "/images/technologyImages/MVCLogo.png",
+        imageUrl: `${techUrl}MVCLogo.png`,
         alt: "ASP.NET MVC",
       },
     ],
@@ -124,24 +126,24 @@ const ProjectList: ProjectType[] = [
   {
     name: "Bossy Books",
     company: "Francis Marion University",
-    imageUrl: "/images/projectImages/BossyBooks.png",
+    imageUrl: `${projectUrl}BossyBooks.png`,
     description:
       "A full stack web app made as my second Capstone designed to help small business owners track customers and any invoices those customers have, as well as a calander to track upcoming events..  The app is complete with both Google OAuth and standard email auth.",
     technologies: [
       {
-        imageUrl: "/images/technologyImages/NextJsLogo.png",
+        imageUrl: `${techUrl}NextJsLogo.png`,
         alt: "Next"
       },
       {
-        imageUrl: "/images/technologyImages/TypescriptLogo.png",
+        imageUrl: `${techUrl}TypescriptLogo.png`,
         alt: "Typescript"
       },
       {
-        imageUrl: "/images/technologyImages/ReactLogo.png",
+        imageUrl: `${techUrl}ReactLogo.png`,
         alt: "React"
       },
       {
-        imageUrl: "/images/technologyImages/PostgresLogo.png",
+        imageUrl: `${techUrl}PostgresLogo.png`,
         alt: "Postgres"
       },
     ],
@@ -165,7 +167,7 @@ const Projects = () => {
           ]}
         >
           <CarouselContent>
-            {ProjectList.map((project, index) => (
+            {projects.map((project, index) => (
               <CarouselItem key={index} className="basis-1/2 md:basis-1/2 lg:basis-1/3 sm:basis-1/2">
                 <Project project={project}></Project>
               </CarouselItem>
