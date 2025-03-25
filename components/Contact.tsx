@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Mail, Phone, Github, Linkedin, Twitter } from "lucide-react";
 import { Input } from "./ui/input";
@@ -10,9 +10,7 @@ import { Textarea } from "./ui/textarea";
 export const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async () => {
-
-  }
+  const handleSubmit = async () => {};
 
   return (
     <div className="relative max-w-7xl mx-auto px-6 py-10">
@@ -25,7 +23,8 @@ export const Contact = () => {
             </CardHeader>
             <CardContent className="space-y-6 ">
               <p className="text-muted-foreground">
-                I&apos;d love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.
+                I&apos;d love to hear from you! Whether you have a question or just want to say hi,
+                feel free to reach out.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -45,8 +44,12 @@ export const Contact = () => {
                 <h3 className="text-lg font-semibold mb-4">Connect with me</h3>
                 <div className="flex space-x-4">
                   {[
-                    { icon: Github, href: 'https://github.com/campbell-frost', label: 'GitHub' },
-                    { icon: Linkedin, href: 'https://www.linkedin.com/in/campbell-frost-39656a207/', label: 'LinkedIn' },
+                    { icon: Github, href: "https://github.com/campbell-frost", label: "GitHub" },
+                    {
+                      icon: Linkedin,
+                      href: "https://www.linkedin.com/in/campbell-frost-39656a207/",
+                      label: "LinkedIn",
+                    },
                   ].map((social) => (
                     <a
                       key={social.label}
@@ -97,4 +100,4 @@ export const Contact = () => {
       </div>
     </div>
   );
-}
+};

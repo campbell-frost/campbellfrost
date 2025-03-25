@@ -1,13 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 import svgToDataUri from "mini-svg-data-uri";
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
 export const HeroHighlight = ({
   children,
@@ -16,11 +16,7 @@ export const HeroHighlight = ({
 }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: React.MouseEvent<HTMLDivElement>) {
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLDivElement>) {
     if (!currentTarget) return;
     let { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
@@ -28,17 +24,13 @@ export const HeroHighlight = ({
   }
   const { resolvedTheme } = useTheme();
 
-  const dark = resolvedTheme === 'dark';
+  const dark = resolvedTheme === "dark";
 
-  const color = dark ? '#a35fe8' : '#8f34eb'
-
+  const color = dark ? "#a35fe8" : "#8f34eb";
 
   return (
     <div
-      className={cn(
-        "relative items-center justify-center w-full group",
-        containerClassName
-      )}
+      className={cn("relative items-center justify-center w-full group", containerClassName)}
       onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0 bg-dot-fade-blue-300 dark:bg-dot-fade-blue-900" />
@@ -60,9 +52,9 @@ export const HeroHighlight = ({
                 </mask>
               </defs>
               <rect width="100%" height="100%" fill="url(#dotPattern)" mask="url(#fadeMask)" />
-            </svg>`
+            </svg>`,
           )}")`,
-          backgroundSize: '100% 100%',
+          backgroundSize: "100% 100%",
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
               200px circle at ${mouseX}px ${mouseY}px,
@@ -111,7 +103,7 @@ export const Highlight = ({
       }}
       className={cn(
         `inline-block pb-1 px-1 rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500`,
-        className
+        className,
       )}
     >
       {children}

@@ -9,8 +9,8 @@ const Hero = () => {
           <div className="w-full md:w-1/2 mb-10 md:mb-0 mr-22">
             <p className="text-xl font-bold">Hi, I&apos;m Campbell</p>
             <p className="text-6xl mt-6 font-bold mb-10 leading-tight">
-              I am a full stack <Highlight>software engineer</Highlight>{" "}
-              passionate about web development
+              I am a full stack <Highlight>software engineer</Highlight> passionate about web
+              development
             </p>
 
             <h5 className="inline">

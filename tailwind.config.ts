@@ -1,16 +1,14 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 import svgToDataUri from "mini-svg-data-uri";
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -96,34 +94,32 @@ const config = {
                 <circle cx="8" cy="8" r="1.5" fill="${value}" />
                 <circle cx="8" cy="8" r="1.5" fill="${value}" />
                 <circle cx="8" cy="8" r="1.5" fill="${value}" />
-              </svg>`
+              </svg>`,
             )}")`,
-            backgroundSize: '32px 32px',
-            maskImage: 'linear-gradient(to bottom, black, transparent)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
-            maskSize: '100% 100%',
-            WebkitMaskSize: '100% 100%',
+            backgroundSize: "32px 32px",
+            maskImage: "linear-gradient(to bottom, black, transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+            maskSize: "100% 100%",
+            WebkitMaskSize: "100% 100%",
           }),
         },
         {
           values: flattenColorPalette(theme("backgroundColor")),
           type: "color",
-        }
+        },
       );
     },
   ],
 } satisfies Config;
 
-
-
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
 
   addBase({
     ":root": newVars,
   });
 }
-export default config
+export default config;
